@@ -11,21 +11,16 @@ class User implements AuthUserInterface
 {
     private string $id;
     private string $email;
-    private string $password;
+    private ?string $password = null;
 
     /**
      * @param string $email
-     * @param string $password
-     * @param UserPasswordHasherInterface $passwordHasher
      */
     public function __construct(
         string $email,
-        string $password,
-        UserPasswordHasherInterface $passwordHasher
     ) {
         $this->id = UlidService::generate();
         $this->email = $email;
-        $this->setPassword($password, $passwordHasher);
     }
 
     /**
@@ -45,9 +40,9 @@ class User implements AuthUserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -76,12 +71,12 @@ class User implements AuthUserInterface
     }
 
     /**
-     * @param string $password
+     * @param string|null $password
      * @param UserPasswordHasher $passwordHasher
      * @return void
      */
-    public function setPassword(string $password, UserPasswordHasher $passwordHasher): void
+    public function setPassword(?string $password, UserPasswordHasher $passwordHasher): void
     {
-        $this->password = $passwordHasher->hash($this, $password);
+        is_null($password) ? $this->password = null : $this->password = $passwordHasher->hash($this, $password);
     }
 }
