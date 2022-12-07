@@ -6,7 +6,3 @@ App\Users\Domain\Entity\User:
       - Email:
       - NotBlank: ~
       - Type: string
-
-    password:
-      - NotBlank: ~
-      - Type: string

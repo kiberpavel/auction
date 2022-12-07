@@ -16,6 +16,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Users/Infrastructure/Database/ORM'
                 prefix: 'App\Users\Domain\Entity'
                 alias: App
+            Refresh:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Shared/Domain/Entity/Token'
+                prefix: 'App\Shared\Domain\Entity\Token'
+                alias: Refresh
 
 when@test:
     doctrine:

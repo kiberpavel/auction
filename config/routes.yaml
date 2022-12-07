@@ -5,3 +5,9 @@ kernel:
 users:
     resource: ../src/Users/Infrastructure/Controller/
     type: annotation
+
+api_refresh_token:
+    path: /api/auth/token/refresh
+
+api_login_check:
+    path: /api/login
