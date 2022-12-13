@@ -3,11 +3,13 @@
 namespace App\Tests\Functional\Users\Infrastructure\Controller;
 
 use App\Tests\Tools\FixtureTools;
+use App\Tests\Tools\LoginTools;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserControllerTest extends WebTestCase
 {
     use FixtureTools;
+    use LoginTools;
 
     public function testUserCreatedSuccessfully(): void
     {
@@ -71,5 +73,20 @@ class UserControllerTest extends WebTestCase
         $status = $client->getResponse()->getStatusCode();
 
         $this->assertEquals(200, $status);
+    }
+
+    public function testGetCurrentUser(): void
+    {
+        $client = static::createClient();
+        $user = $this->loadUserFixture();
+
+        $token = $this->createAuthenticatedClient($client, $user->getEmail(), $user->getPassword());
+
+        $client->setServerParameter('HTTP_AUTHORIZATION', sprintf('Bearer %s', $token));
+
+        $client->request('GET', '/api/users/current');
+
+        $userData = json_decode($client->getResponse()->getContent(), true);
+        $this->assertEquals($user->getEmail(), $userData['email']);
     }
 }

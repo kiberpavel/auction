@@ -35,6 +35,7 @@ security:
         - { path: ^/api/auth/token/refresh, roles: PUBLIC_ACCESS }
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
         - { path: ^/api/social-login, roles: PUBLIC_ACCESS }
+        - { path: ^/api/users/current, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
