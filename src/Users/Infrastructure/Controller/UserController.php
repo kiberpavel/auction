@@ -2,6 +2,7 @@
 
 namespace App\Users\Infrastructure\Controller;
 
+use App\Shared\Domain\Security\UserFetcherInterface;
 use App\Users\Infrastructure\Service\SocialAuth;
 use App\Users\Infrastructure\Service\UserRegistration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,8 @@ class UserController extends AbstractController
 {
     public function __construct(
         private readonly UserRegistration $userRegistration,
-        private readonly SocialAuth $socialAuth)
+        private readonly SocialAuth $socialAuth,
+        private readonly UserFetcherInterface $userFetcher)
     {
     }
 
@@ -27,5 +29,16 @@ class UserController extends AbstractController
     public function socialLogin(Request $request): JsonResponse
     {
         return $this->socialAuth->auth($request);
+    }
+
+    #[Route('api/users/current', methods: ['GET'])]
+    public function getCurrentUser(): JsonResponse
+    {
+        $user = $this->userFetcher->getAuthUser();
+
+        return new JsonResponse([
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+        ]);
     }
 }
