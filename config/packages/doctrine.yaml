@@ -21,6 +21,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Shared/Domain/Entity/Token'
                 prefix: 'App\Shared\Domain\Entity\Token'
                 alias: Refresh
+            Lots:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Lots/Infrastructure/Database/ORM'
+                prefix: 'App\Lots\Domain\Entity'
+                alias: Lots
 
 when@test:
     doctrine:
