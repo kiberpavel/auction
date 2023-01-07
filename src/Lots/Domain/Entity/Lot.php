@@ -69,4 +69,29 @@ class Lot
     {
         return $this->image_url;
     }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function setShortName(string $short_name): void
+    {
+        $this->short_name = $short_name;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function setImageUrl(string $image_url): void
+    {
+        $this->image_url = $image_url;
+    }
 }
