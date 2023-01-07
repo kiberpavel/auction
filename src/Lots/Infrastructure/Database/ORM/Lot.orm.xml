@@ -11,7 +11,6 @@
                 field="user"
                 target-entity="App\Users\Domain\Entity\User"
                 invesed-by="films_film">
-            <cascade><cascade-remove /></cascade>
         </many-to-one>
         <field name="status" type="string"/>
         <field name="short_name" type="string" />
