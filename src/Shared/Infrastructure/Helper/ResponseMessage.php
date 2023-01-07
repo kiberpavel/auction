@@ -6,4 +6,7 @@ class ResponseMessage
 {
     public const ADD_RECORD = 'Record successfully add';
     public const PARAMS_ERROR = 'All fields are required';
+    public const REMOVE_RECORD = 'Record successfully remove';
+    public const UPDATE_RECORD = 'Record successfully update';
+    public const NOT_FOUND = 'Record not found';
 }
