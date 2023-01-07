@@ -19,4 +19,25 @@ class LotRepository extends ServiceEntityRepository implements LotRepositoryInte
         $this->_em->persist($lot);
         $this->_em->flush();
     }
+
+    public function remove(Lot $lot): void
+    {
+        $this->_em->remove($lot);
+        $this->_em->flush();
+    }
+
+    public function update(): void
+    {
+        $this->_em->flush();
+    }
+
+    public function getAllRecords(): ?array
+    {
+        return $this->findAll();
+    }
+
+    public function findById(string $id): ?Lot
+    {
+        return $this->find($id);
+    }
 }
