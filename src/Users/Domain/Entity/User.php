@@ -9,18 +9,26 @@ use App\Users\Infrastructure\Service\UserPasswordHasher;
 
 class User implements AuthUserInterface
 {
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_VENDOR = 'ROLE_VENDOR';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+
     private string $id;
     private string $email;
     private ?string $password = null;
+    private string $role;
 
     /**
      * @param string $email
+     * @param string $role
      */
     public function __construct(
         string $email,
+        string $role,
     ) {
         $this->id = UlidService::generate();
         $this->email = $email;
+        $this->role = $role;
     }
 
     /**
@@ -52,7 +60,7 @@ class User implements AuthUserInterface
      */
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return [$this->role];
     }
 
     /**
@@ -78,5 +86,14 @@ class User implements AuthUserInterface
     public function setPassword(?string $password, UserPasswordHasher $passwordHasher): void
     {
         is_null($password) ? $this->password = null : $this->password = $passwordHasher->hash($this, $password);
+    }
+
+    /**
+     * @param string $role
+     * @return void
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 }
