@@ -4,6 +4,7 @@ namespace App\Lots\Infrastructure\Repository;
 
 use App\Lots\Domain\Entity\Lot;
 use App\Lots\Domain\Repository\LotRepositoryInterface;
+use App\Shared\Domain\Security\AuthUserInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,5 +40,10 @@ class LotRepository extends ServiceEntityRepository implements LotRepositoryInte
     public function findById(string $id): ?Lot
     {
         return $this->find($id);
+    }
+
+    public function getUserRecords(AuthUserInterface $user): array
+    {
+        return $this->findBy(['user' => $user]);
     }
 }
