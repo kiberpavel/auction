@@ -36,9 +36,9 @@ security:
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
         - { path: ^/api/social-login, roles: PUBLIC_ACCESS }
         - { path: ^/api/users/current, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/lot/create, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/lot/delete, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/lot/update, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/lot/create, roles: [ROLE_VENDOR, ROLE_ADMIN] }
+        - { path: ^/api/lot/delete, roles: [ROLE_VENDOR, ROLE_ADMIN] }
+        - { path: ^/api/lot/update, roles: [ROLE_VENDOR, ROLE_ADMIN] }
         - { path: ^/api/lot/list, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
