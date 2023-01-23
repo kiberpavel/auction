@@ -27,8 +27,9 @@ class LotCreation
         $price = $request->get('price');
         $description = $request->get('description');
         $uploadFile = $request->files->get('lot_image');
+        $end_trade_time = $request->get('end_trade_time');
 
-        if (!$userId || !$shortName || !$price || !$description || !$uploadFile) {
+        if (!$userId || !$shortName || !$price || !$description || !$uploadFile || !$end_trade_time) {
             return new JsonResponse([
                 'error' => ResponseMessage::PARAMS_ERROR,
             ], 400);
@@ -38,7 +39,7 @@ class LotCreation
         $image_url = $this->imageHandler->handle($uploadFile);
 
         try {
-            $lot = $this->lotFactory->create($user, $shortName, $price, $description, $image_url);
+            $lot = $this->lotFactory->create($user, $shortName, $price, $description, $image_url, $end_trade_time);
             $this->lotRepository->add($lot);
         } catch (TypeError $error) {
             return new JsonResponse([

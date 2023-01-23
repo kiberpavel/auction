@@ -20,7 +20,7 @@ class LotEdit extends AbstractController
     public function editLot(Request $request): JsonResponse
     {
         $counter = 0;
-        $params = ['short_name', 'status', 'price', 'description', 'lot_image'];
+        $params = ['short_name', 'status', 'price', 'description', 'lot_image', 'end_trade_time'];
         $id = $request->get('id');
 
         if (!$id) {
@@ -78,6 +78,8 @@ class LotEdit extends AbstractController
             case 'lot_image':
                 $lot->setImageUrl($data);
                 break;
+            case 'end_trade_time':
+                $lot->setEndTradeTime($data);
         }
     }
 }
