@@ -38,6 +38,7 @@ class LotControllerTest extends WebTestCase
                 'short_name' => 'test name',
                 'price' => 2.3,
                 'description' => 'Test description',
+                'end_trade_time' => '2023-01-21 08:26:26',
             ])
         );
 
