@@ -17,6 +17,7 @@ class Lot
     private float $price;
     private string $description;
     private string $image_url;
+    private \DateTimeImmutable $end_trade_time;
 
     public function __construct(
         User $user,
@@ -24,7 +25,8 @@ class Lot
         string $short_name,
         float $price,
         string $description,
-        string $image_url
+        string $image_url,
+        string $end_trade_time,
     ) {
         $this->id = UlidService::generate();
         $this->user = $user;
@@ -33,6 +35,7 @@ class Lot
         $this->price = $price;
         $this->description = $description;
         $this->image_url = $image_url;
+        $this->setEndTradeTime($end_trade_time);
     }
 
     public function getId(): string
@@ -70,6 +73,11 @@ class Lot
         return $this->image_url;
     }
 
+    public function getEndTradeTime(): \DateTimeImmutable
+    {
+        return $this->end_trade_time;
+    }
+
     public function setStatus(string $status): void
     {
         $this->status = $status;
@@ -93,5 +101,10 @@ class Lot
     public function setImageUrl(string $image_url): void
     {
         $this->image_url = $image_url;
+    }
+
+    public function setEndTradeTime(string $end_trade_time): void
+    {
+        $this->end_trade_time = new \DateTimeImmutable($end_trade_time);
     }
 }

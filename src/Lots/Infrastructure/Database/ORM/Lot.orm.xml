@@ -17,6 +17,7 @@
         <field name="price" type="float" />
         <field name="description" type="string" />
         <field name="image_url" type="string" />
+        <field name="end_trade_time" type="datetime_immutable" />
     </entity>
 
 </doctrine-mapping>
