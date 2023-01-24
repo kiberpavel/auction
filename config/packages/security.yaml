@@ -39,7 +39,7 @@ security:
         - { path: ^/api/lot/create, roles: [ROLE_VENDOR, ROLE_ADMIN] }
         - { path: ^/api/lot/delete, roles: [ROLE_VENDOR, ROLE_ADMIN] }
         - { path: ^/api/lot/update, roles: [ROLE_VENDOR, ROLE_ADMIN] }
-        - { path: ^/api/lot/list, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/lot/list, roles: PUBLIC_ACCESS }
 
 when@test:
     security:
