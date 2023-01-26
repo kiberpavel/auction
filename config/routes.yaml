@@ -15,3 +15,7 @@ api_login_check:
 lots:
     resource: ../src/Lots/Infrastructure/Controller/
     type: annotation
+
+buyers:
+    resource: ../src/Buyers/Infrastructure/Controller/
+    type: annotation
