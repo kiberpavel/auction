@@ -40,6 +40,10 @@ security:
         - { path: ^/api/lot/delete, roles: [ROLE_VENDOR, ROLE_ADMIN] }
         - { path: ^/api/lot/update, roles: [ROLE_VENDOR, ROLE_ADMIN] }
         - { path: ^/api/lot/list, roles: PUBLIC_ACCESS }
+        - { path: ^/api/buyer/set, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/buyer/delete, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/buyer/list, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/buyer/current, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
