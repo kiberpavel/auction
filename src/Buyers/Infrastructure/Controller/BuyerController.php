@@ -23,7 +23,7 @@ class BuyerController
     #[Route('api/buyer/set', methods: ['POST'])]
     public function setBuyer(Request $request): JsonResponse
     {
-      return $this->buyerSet->createOrUpdate($request);
+        return $this->buyerSet->createOrUpdate($request);
     }
 
     #[Route('api/buyer/delete', methods: ['POST'])]
