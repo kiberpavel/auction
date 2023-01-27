@@ -3,7 +3,8 @@
 namespace App\Buyers\Infrastructure\Service;
 
 use App\Buyers\Domain\Repository\BuyerRepositoryInterface;
-use App\Buyers\Infrastructure\Adapters\BuyerAdapter;
+use App\Buyers\Infrastructure\Adapters\LotAdapter;
+use App\Buyers\Infrastructure\Adapters\UserAdapter;
 use App\Shared\Infrastructure\Helper\ResponseMessage;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,16 +13,21 @@ class BuyerSet
 {
     public function __construct(
         private readonly BuyerRepositoryInterface $buyerRepository,
-        private readonly BuyerAdapter $buyerAdapter,
         private readonly BuyerCreation $buyerCreation,
-        private readonly BuyerUpdate $buyerUpdate)
+        private readonly BuyerUpdate $buyerUpdate,
+        private readonly LotAdapter $lotAdapter,
+        private readonly UserAdapter $userAdapter)
     {
     }
 
-    public function createOrUpdate(Request $request): JsonResponse
+    public function createOrUpdate(Request $request = null, string $lotId = null, string $userId = null): JsonResponse
     {
-        $lotId = $request->get('lotId');
-        $userId = $request->get('userId');
+        if (is_null($lotId)) {
+            $lotId = $request->get('lotId');
+        }
+        if (is_null($userId)) {
+            $userId = $request->get('userId');
+        }
 
         if (!$lotId || !$userId) {
             return new JsonResponse([
@@ -29,8 +35,8 @@ class BuyerSet
             ], 400);
         }
 
-        $lot = $this->buyerAdapter->importLot($lotId);
-        $user = $this->buyerAdapter->importUser($userId);
+        $lot = $this->lotAdapter->importLot($lotId);
+        $user = $this->userAdapter->importUser($userId);
 
         $buyer = $this->buyerRepository->getRecordByLot($lot);
 
