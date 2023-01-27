@@ -10,4 +10,5 @@ class ResponseMessage
     public const UPDATE_RECORD = 'Record successfully update';
     public const NOT_FOUND = 'Record not found';
     public const INVALID_USER = 'User is invalid';
+    public const INVALID_DATA = 'Data is incorrect';
 }

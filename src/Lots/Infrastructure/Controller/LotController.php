@@ -4,6 +4,7 @@ namespace App\Lots\Infrastructure\Controller;
 
 use App\Lots\Infrastructure\Service\LotCreation;
 use App\Lots\Infrastructure\Service\LotEdit;
+use App\Lots\Infrastructure\Service\LotPriceEdit;
 use App\Lots\Infrastructure\Service\LotRemove;
 use App\Lots\Infrastructure\Service\LotsList;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,7 +17,8 @@ class LotController
         private readonly LotCreation $lotCreation,
         private readonly LotRemove $lotRemove,
         private readonly LotEdit $lotEdit,
-        private readonly LotsList $lotsList)
+        private readonly LotsList $lotsList,
+        private readonly LotPriceEdit $lotPriceEdit)
     {
     }
 
@@ -42,5 +44,11 @@ class LotController
     public function listOfLots(): JsonResponse
     {
         return $this->lotsList->outputLots();
+    }
+
+    #[Route('api/lot/edit/price', methods: ['POST'])]
+    public function updatePrice(Request $request): JsonResponse
+    {
+        return $this->lotPriceEdit->edit($request);
     }
 }
