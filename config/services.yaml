@@ -28,5 +28,9 @@ services:
         resource: '../src/Buyers/Infrastructure/Controller/'
         tags: [ 'controller.service_arguments' ]
 
+    App\Orders\Infrastructure\Controller\:
+        resource: '../src/Orders/Infrastructure/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
