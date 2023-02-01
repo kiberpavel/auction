@@ -19,3 +19,7 @@ lots:
 buyers:
     resource: ../src/Buyers/Infrastructure/Controller/
     type: annotation
+
+orders:
+    resource: ../src/Orders/Infrastructure/Controller/
+    type: annotation

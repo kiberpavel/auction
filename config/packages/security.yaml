@@ -45,6 +45,9 @@ security:
         - { path: ^/api/buyer/list, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/buyer/current, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/lot/edit/price, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/api/order/set, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/order/delete, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/order/list, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
