@@ -32,7 +32,13 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Buyers/Infrastructure/Database/ORM'
                 prefix: 'App\Buyers\Domain\Entity'
-                alias: Lots
+                alias: Buyers
+            Orders:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Orders/Infrastructure/Database/ORM'
+                prefix: 'App\Orders\Domain\Entity'
+                alias: Orders
 
 when@test:
     doctrine:
