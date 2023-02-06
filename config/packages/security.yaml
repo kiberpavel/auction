@@ -48,6 +48,8 @@ security:
         - { path: ^/api/order/set, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/order/delete, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/order/list, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/order/\d+$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/order/pay, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

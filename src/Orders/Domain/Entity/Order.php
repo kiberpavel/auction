@@ -43,4 +43,9 @@ class Order
     {
         return $this->end_time_for_pay;
     }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
 }
