@@ -11,4 +11,5 @@ class ResponseMessage
     public const NOT_FOUND = 'Record not found';
     public const INVALID_USER = 'User is invalid';
     public const INVALID_DATA = 'Data is incorrect';
+    public const SUCCESS_PAY = 'Payment is success';
 }
