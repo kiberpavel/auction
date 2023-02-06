@@ -41,4 +41,10 @@ class OrderRepository extends ServiceEntityRepository implements OrderRepository
     {
         return $this->findBy(['buyer' => $buyer]);
     }
+
+    public function update(): void
+    {
+        $this->_em->flush();
+    }
+
 }
